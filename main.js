@@ -63,6 +63,9 @@ const posts = [
 // riferimento al container principale
 const generalContainer = document.getElementById('container');
 
+// contenitore likes
+const arrayLikes = [];
+
 // creazione posts
 for (let i = 0; i < posts.length; i++) {
 
@@ -108,7 +111,6 @@ for (let i = 0; i < posts.length; i++) {
     }
 
     profileImg.src = posts[i].author.image;
-
 
     // Container Nome e Data
     let ndContainer = document.createElement('div');
@@ -180,16 +182,14 @@ for (let i = 0; i < posts.length; i++) {
 
     likesContainerGeneral.append(likesContainer);
 
-    // Link 
-    let link = document.createElement('a');
+    // button Like 
+    let buttonLike = document.createElement('button');
 
-    link.classList.add('like-button', 'js-like-button');
+    buttonLike.classList.add('like-button', 'js-like-button');
 
-    link.setAttribute('href', '#');
+    buttonLike.setAttribute('type', 'button');
 
-    link.setAttribute('data-postid', '1');
-
-    likesContainer.append(link);
+    likesContainer.append(buttonLike);
 
     // Icon
     let icon = document.createElement('i');
@@ -198,14 +198,14 @@ for (let i = 0; i < posts.length; i++) {
 
     icon.setAttribute('aria-hidden', 'true');
 
-    link.append(icon);
+    buttonLike.append(icon);
 
     // Like label
     let likeLabel = document.createElement('span');
 
     likeLabel.classList.add('like-button__label');
 
-    link.append(likeLabel);
+    buttonLike.append(likeLabel);
 
     likeLabel.innerHTML = 'Mi Piace';
 
@@ -221,7 +221,7 @@ for (let i = 0; i < posts.length; i++) {
 
     likesNumber.classList.add('js-likes-counter');
 
-    likesNumber.setAttribute('id', 'like-counter-1');
+    likesNumber.setAttribute('id', 'like-counter' + posts[i].id);
 
     likesNumber.innerHTML = posts[i].likes;
 
@@ -230,6 +230,23 @@ for (let i = 0; i < posts.length; i++) {
 
     likesCounter.append(likesNumberLabel);
 
-    likesNumberLabel.innerHTML = `Piace a ${likesNumber.outerHTML} persone`;
+    likesNumberLabel.append('Piace a ', likesNumber, ' persone' );
 
-}
+    // click bottone like
+    buttonLike.addEventListener('click',
+    
+        () => {
+
+            buttonLike.classList.add('clicked');
+
+            likesNumber.innerHTML = posts[i].likes + 1;
+
+            arrayLikes.push(posts[i].id);
+
+            console.log(arrayLikes)
+
+        }
+    
+    )
+
+};

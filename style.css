@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+/* Click bottone like */
+.clicked {
+    color: blue !important;
+}
+
 body {
     font-family: system-ui, sans-serif;
     background-color: #023047;
@@ -107,8 +112,11 @@ h1 {
     display: inline-block;
     padding: 16px;
     border-radius: 8px;    
-    text-decoration: none;
     color: #404040;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    font-size: 15px;
 }
 
 .like-button:not(.like-button--liked):hover {
