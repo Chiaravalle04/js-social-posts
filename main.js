@@ -81,50 +81,58 @@ for (let i = 0; i < posts.length; i++) {
 
     generalContainer.append(postContainer);
 
-    //header del post
+    // header del post
     let headerPost = document.createElement('div');
 
     headerPost.classList.add('post__header');
 
     postContainer.append(headerPost);
 
-    // Immagine, Nome e Data
+    // immagine, nome e data
     let postMetaContainer = document.createElement('div');
 
     postMetaContainer.classList.add('post-meta');
 
     headerPost.append(postMetaContainer);
 
-    // Container immagine profilo
+    // container immagine profilo
     let profileImgContainer = document.createElement('div');
 
     profileImgContainer.classList.add('post-meta__icon');
 
     postMetaContainer.append(profileImgContainer);
 
-    // Immagine profilo
+    // immagine profilo
     let profileImg = document.createElement('img');
 
     profileImg.classList.add('profile-pic');
 
     profileImgContainer.append(profileImg);
 
-    if (posts[i].author.image == null) {
+    if (posts[i].author.image === null) {
 
-        posts[i].author.image = 'https://cdn.arstechnica.net/wp-content/uploads/archive/02-16-2011/facebook_head.jpg';
+        let authorPostName = document.createElement('div');
+
+        authorPostName.classList.add('not-img');
+
+        profileImgContainer.append(authorPostName);
+
+        authorPostName.innerHTML = posts[i].author.name.split(" ").map((word) => word[0]).join("");
+            
+    } else {
+
+        profileImg.src = posts[i].author.image;
 
     }
 
-    profileImg.src = posts[i].author.image;
-
-    // Container Nome e Data
+    // container nome e data
     let ndContainer = document.createElement('div');
 
     ndContainer.classList.add('post-meta__data');
 
     postMetaContainer.append(ndContainer);
 
-    // Nome autore post
+    // nome autore post
     let authorPost = document.createElement('div');
 
     authorPost.classList.add('post-meta__author');
@@ -133,7 +141,7 @@ for (let i = 0; i < posts.length; i++) {
 
     authorPost.innerHTML = posts[i].author.name;
 
-    // Data del post 
+    // data del post 
     let datePost = document.createElement('div');
 
     datePost.classList.add('post-meta__time');
@@ -142,7 +150,7 @@ for (let i = 0; i < posts.length; i++) {
 
     datePost.innerHTML = italianDate;
 
-    // Caption post
+    // caption post
     let caption = document.createElement('div');
 
     caption.classList.add('post__text');
@@ -151,14 +159,14 @@ for (let i = 0; i < posts.length; i++) {
 
     caption.innerHTML = posts[i].content;
 
-    // Container immagine post
+    // container immagine post
     let containerPostImg = document.createElement('div');
 
     containerPostImg.classList.add('post__image');
 
     postContainer.append(containerPostImg);
 
-    // Immagine post
+    // immagine post
     let postImg = document.createElement('img');
 
     containerPostImg.append(postImg);
@@ -166,21 +174,21 @@ for (let i = 0; i < posts.length; i++) {
     postImg.src = posts[i].media;
 
     
-    // Footer post 
+    // footer post 
     let footerPost = document.createElement('div');
 
     footerPost.classList.add('post__footer');
 
     postContainer.append(footerPost);
 
-    // Likes container generale
+    // likes container generale
     let likesContainerGeneral = document.createElement('div');
 
     likesContainerGeneral.classList.add('likes', 'js-likes');
 
     footerPost.append(likesContainerGeneral);
 
-    // Likes container
+    // likes container
     let likesContainer = document.createElement('div');
 
     likesContainer.classList.add('likes__cta');
@@ -196,7 +204,7 @@ for (let i = 0; i < posts.length; i++) {
 
     likesContainer.append(buttonLike);
 
-    // Icon
+    // icon
     let icon = document.createElement('i');
 
     icon.classList.add('like-button__icon', 'fas', 'fa-thumbs-up');
@@ -205,7 +213,7 @@ for (let i = 0; i < posts.length; i++) {
 
     buttonLike.append(icon);
 
-    // Like label
+    // like label
     let likeLabel = document.createElement('span');
 
     likeLabel.classList.add('like-button__label');
@@ -214,7 +222,7 @@ for (let i = 0; i < posts.length; i++) {
 
     likeLabel.innerHTML = 'Mi Piace';
 
-    // Likes counter
+    // likes counter
     let likesCounter = document.createElement('div');
 
     likesCounter.classList.add('likes__counter');
@@ -230,7 +238,7 @@ for (let i = 0; i < posts.length; i++) {
 
     likesNumber.innerHTML = posts[i].likes;
 
-    // Likes number label
+    // likes number label
     let likesNumberLabel = document.createElement('span');
 
     likesCounter.append(likesNumberLabel);

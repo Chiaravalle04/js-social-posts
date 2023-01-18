@@ -9,6 +9,18 @@
     color: blue !important;
 }
 
+/* Classe per il profilo senza img */
+.not-img {
+    width: 60px;
+    height: 60px;
+    margin-top: -17.6px;
+    font-size: 30px;
+    border-radius: 50%;
+    background-color: grey;
+    text-align: center;
+    line-height: 60px;
+}
+
 body {
     font-family: system-ui, sans-serif;
     background-color: #023047;
