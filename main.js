@@ -66,6 +66,9 @@ const generalContainer = document.getElementById('container');
 // contenitore likes
 const arrayLikes = [];
 
+// verifica bottone like
+let verify = 0;
+
 // creazione posts
 for (let i = 0; i < posts.length; i++) {
     
@@ -250,13 +253,26 @@ for (let i = 0; i < posts.length; i++) {
     
         () => {
 
-            buttonLike.classList.add('clicked');
+            verify++;
 
-            likesNumber.innerHTML = posts[i].likes + 1;
+            if (verify == 1) {
 
-            arrayLikes.push(posts[i].id);
+                buttonLike.classList.add('clicked');
 
-            console.log(arrayLikes)
+                likesNumber.innerHTML = posts[i].likes + 1;
+
+                arrayLikes.push(posts[i].id);
+
+                
+            } else {
+
+                buttonLike.classList.remove('clicked');
+
+                likesNumber.innerHTML = posts[i].likes;
+
+                verify = 0;
+
+            }
 
         }
     
