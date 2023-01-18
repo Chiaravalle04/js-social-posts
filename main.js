@@ -68,6 +68,11 @@ const arrayLikes = [];
 
 // creazione posts
 for (let i = 0; i < posts.length; i++) {
+    
+    // conversione data nel formato italiano
+    let americanDate = new Date (posts[i].created);
+
+    let italianDate = americanDate.toLocaleDateString("it-IT");
 
     // post container generale
     let postContainer = document.createElement('div');
@@ -135,7 +140,7 @@ for (let i = 0; i < posts.length; i++) {
 
     ndContainer.append(datePost);
 
-    datePost.innerHTML = posts[i].created;
+    datePost.innerHTML = italianDate;
 
     // Caption post
     let caption = document.createElement('div');
