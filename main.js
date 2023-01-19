@@ -257,16 +257,21 @@ for (let i = 0; i < posts.length; i++) {
 
             if (verify == 1) {
 
-                buttonLike.classList.add('clicked');
+                buttonLike.classList.add('like-button--liked');
 
                 likesNumber.innerHTML = posts[i].likes + 1;
 
-                arrayLikes.push(posts[i].id);
+                if (!arrayLikes.includes(posts[i].id)) {
 
+                    arrayLikes.push(posts[i].id);
+
+                }
+
+                console.log(arrayLikes);
                 
             } else {
 
-                buttonLike.classList.remove('clicked');
+                buttonLike.classList.remove('like-button--liked');
 
                 likesNumber.innerHTML = posts[i].likes;
 
