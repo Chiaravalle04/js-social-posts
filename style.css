@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-/* Click bottone like */
-.clicked {
-    color: blue !important;
-}
-
 /* Classe per il profilo senza img */
 .not-img {
     width: 60px;
